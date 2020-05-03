@@ -15,9 +15,7 @@ if (!$conn) {
 
 
 <?php
-	require_once "confi.php";
-
-
+	
 	\Stripe\Stripe::setVerifySslCerts(false);
 
 	
@@ -32,7 +30,7 @@ if (!$conn) {
 
 	$charge = \Stripe\Charge::create(array(
 		"amount" => $products[$productID]["price"],
-		"currency" => "usd",
+		"currency" => "inr",
 		"description" => $products[$productID]["title"],
 		"source" => $token,
 	));
@@ -75,13 +73,13 @@ if(!$query) {
         $mail->isSMTP();                                 
         $mail->Host = 'smtp.gmail.com';  
         $mail->SMTPAuth = true;                              
-        $mail->Username = '122015021@sastra.ac.in';        
-        $mail->Password = 'thunder0101';                           
+        $mail->Username = '';        
+        $mail->Password = '';                           
         $mail->SMTPSecure = 'ssl';                           
         $mail->Port = 465;                                   
 
         //Recipients
-        $mail->setFrom('122015021@sastra.ac.in', 'CVRR');
+        $mail->setFrom('', 'CVRR');
         $mail->addAttachment("INVOICE.txt", "INVOICE");
         $mail->addAddress($email);     
         $mail->addReplyTo('noreply@example.com', 'noreply');
